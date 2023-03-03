@@ -41,21 +41,20 @@ Follows infrastructure as code (Iac) in which we can define the application infr
 
 ### Anatomy of a serverless project 
 
-service:
-	name : (name of the service we r providing)
-plugins: (list of plugins that we r going to use)
-	- serverless-webpack
-	- serverless-bundle
-provider: (service provider like aws,azure,gcp)
-	name : aws
-	runtime :  (runtime of the function like node,python,...)
-	memorySize:
-	stage:(stage of the application like dev , test and prod)
-	region : (region of the deployment of the function)
-functions :(details of the function)
-	hello : (name of the function)
-		handler : (function handler path)
-		events : (events of invocation of the perticular function)
-			- http : 
-				method : (name of the event method like get,put,post,etc..)
-				path: (end point)
+service:/n
+	name : (name of the service we r providing)/n
+plugins: (list of plugins that we r going to use)/n
+	- serverless-bundle/n
+provider: (service provider like aws,azure,gcp)/n
+	name : aws/n
+	runtime :  (runtime of the function like node,python,...)/n
+	memorySize:/n
+	stage:(stage of the application like dev , test and prod)/n
+	region : (region of the deployment of the function)/n
+functions :(details of the function)/n
+	hello : (name of the function)/n
+		handler : (function handler path)/n
+		events : (events of invocation of the perticular function)/n
+			- http : /n
+				method : (name of the event method like get,put,post,etc..)/n
+				path: (end point)/n
