@@ -41,7 +41,7 @@ Follows infrastructure as code (Iac) in which we can define the application infr
 
 ### Anatomy of a serverless project 
 
-*** service: 
+``` service: 
 	name : (name of the service we r providing) 
 plugins: (list of plugins that we r going to use) 
 	- serverless-bundle 
@@ -57,4 +57,4 @@ functions :(details of the function)
 		events : (events of invocation of the perticular function) 
 			- http :  
 				method : (name of the event method like get,put,post,etc..) 
-				path: (end point) ***
+				path: (end point) ```
