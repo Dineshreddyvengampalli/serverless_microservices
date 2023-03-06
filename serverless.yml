@@ -2,12 +2,33 @@ service: auction-service
 
 plugins:
   - serverless-bundle
+  - serverless-pseudo-parameters
 
 provider:
   name: aws
   runtime: nodejs12.x
   memorySize: 256
   stage: ${opt:stage, 'dev'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+       - dynamodb:PutItem
+      Resource:
+       - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/AuctionsTable
+
+resources:
+  Resources:
+    auctionsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: AuctionsTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
   
 functions:
   createAuction:

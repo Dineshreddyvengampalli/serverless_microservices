@@ -1,0 +1,28 @@
+service : kcndcns
+
+plugins:
+ - mcks
+ - svnsv
+
+provider : 
+  name : aws
+  runtime : nodejs12.x
+  maxsize : 124
+  stage : ${opt:stage,'dev'}
+  iamRoleStatements :
+
+resources:
+ Resources:
+  dynomoTable:
+    Type: AWS :: dynamodb:: Table
+    Properties : 
+      TableName : 
+      AttributeDefinitions
+
+functions:
+  hello :
+    handler : path to handler
+    events:
+      - http:
+          method: dndncdnc
+          path : /path
