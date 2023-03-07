@@ -12,7 +12,10 @@ async function createAuction(event, context) {
     id : uuid(),
     title,
     status : 'OPEN',
-    createdAt
+    createdAt,
+    highestBid :{
+      amount : 0
+    }
   };
 
   await dynamodb.put({
