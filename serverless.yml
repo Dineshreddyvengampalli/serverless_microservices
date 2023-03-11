@@ -18,9 +18,11 @@ provider:
       - dynamodb:Scan
       - dynamodb:GetItem
       - dynamodb:UpdateItem
+      - dynamodb:Query
 
     Resource:
       - ${self:custom.AuctionsTable.arn}
+      - !Join ['/',['${self:custom.AuctionsTable.arn}','index','statusAndEndDate']]
 
 resources:
   Resources:
