@@ -1,27 +1,13 @@
-import AWS from 'aws-sdk';
-import createError from 'http-errors'
-const dynamodb = new AWS.DynamoDB.DocumentClient();
-
-
+import { getAuction } from "../lib/getAuctionById";
 async function getAuctionById(event, context) {
+    console.log('inside main function')
     let {id} = event.pathParameters;
-    let auction;
-    try {
-        const result =  await dynamodb.get({
-            TableName : process.env.AUCTION_TABLE_NAME,
-            Key :{id}
-        }).promise()
-        auction = result.Item
-        console.log('result.Item',result.Item)
-    } catch (error) {
-        throw new createError.InternalServerError(error)
-    }
-    if(!auction){
-        throw new createError.NotFound(`${id} not found `)
-    }
+    console.log('inside main : id : ',id)
+    const auction = await getAuction(id)
+    console.log('inside main auction :',auction)
 
   return {
-    statusCode: 201,
+    statusCode: 200,
     body: JSON.stringify(auction),
   };
 }
